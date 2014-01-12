@@ -1,0 +1,14 @@
+			<section class="posts">
+<% @posts.each do |post| %>
+				<article>
+					<h2 class="title"><%= link_to	post.title, post %></h2>
+					<h3 class="author"><%= post.author.name %></h3>
+					<%= truncate post.body, length: 200, separator: ' ', omission: '(...)' %>
+				</article>
+<% end %>
+			</section>
+<% if user_signed_in? %>
+			<section class="actions">
+				<p><%= link_to 'Create Post', new_post_path %></p>
+			</section>
+<% end %>

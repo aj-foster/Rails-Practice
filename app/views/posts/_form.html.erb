@@ -1,0 +1,19 @@
+				<%= form_for :post, url: posts_path do |f| %>
+<% if @post.errors.any? %>
+					<h2>Submission <%= pluralize @post.errors.count, "Error" %></h2>
+					<ul>
+<% @post.errors.full_message.each do |msg| %>
+						<li><%= msg %></li>
+<% end %>
+					</ul>
+<% end %>
+					<p>
+						<%= f.label :title %><br>
+						<%= f.text_field :title %>
+					</p>
+					<p>
+						<%= f.label :body %><br>
+						<%= f.text_area :body %>
+					</p>
+					<p><%= f.submit %></p>
+				<% end %>
