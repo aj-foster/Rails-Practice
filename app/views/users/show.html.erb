@@ -1,0 +1,26 @@
+			<section class="posts">
+				<h2>Recent posts by <%= @user.name %></h2>
+<% if !@posts.blank? %>
+	<% for post in @posts %>
+				<article class="post">
+					<div class="info">
+						<h2 class="title"><%= link_to post.title, post %></h2>
+					</div>
+					<%= simple_format(truncate post.body, length: 200, separator: ' ', omission: ' ...') %>
+				</article>
+	<% end %>
+<% else %>
+				<p>This user has no recent posts.</p>
+<% end %>
+			</section>
+			<hr>
+			<section class="comments">
+				<h2>Recent comments by <%= @user.name %></h2>
+<% if !@comments.blank? %>
+	<% for comment in @comments %>
+<%= render comment %>
+	<% end %>
+<% else %>
+				<p>This user has no recent comments.</p>
+<% end %>
+			</section>
