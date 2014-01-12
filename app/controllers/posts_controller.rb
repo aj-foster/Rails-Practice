@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	before_filter :authenticate_user!, except: [:show, :index]
 
 	def index
-		@posts = Post.order(created_at: :desc).take(5)
+		@posts = Post.order(created_at: :desc).page(params[:page])
 	end
 
 

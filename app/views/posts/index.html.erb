@@ -3,11 +3,12 @@
 				<article class="post">
 					<div class="info">
 						<h2 class="title"><%= link_to	post.title, post %></h2>
-						By <%= post.author.name %>
+						By <%= link_to post.author.name, post.author %>
 					</div>
 					<%= simple_format(truncate post.body, length: 200, separator: ' ', omission: ' ...') %>
 				</article>
 <% end %>
+			<%= will_paginate @posts %>
 			</section>
 <% if user_signed_in? %>
 			<section class="actions">
