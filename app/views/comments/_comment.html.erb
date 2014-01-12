@@ -1,0 +1,7 @@
+				<article class="comment">
+					<h3><%= comment.author.name %></h3>
+					<%= simple_format(comment.body) %>
+<% if can? :destroy, comment %>
+					<%= link_to 'Delete Comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+				</article>

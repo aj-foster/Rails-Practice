@@ -3,6 +3,9 @@ class Ability
 
 	def initialize(user)
 
+		# Guest user
+		user ||= User.new
+
 		can :manage, :all if user.role == "Admin"
 
 		can :manage, Post, :author_id => user.id

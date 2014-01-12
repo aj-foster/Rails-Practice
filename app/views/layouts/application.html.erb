@@ -22,8 +22,12 @@
 					</p>
 <% end %>
 				</div>
-				<h1>Simple Rails Blog</h1>
+				<h1><%= link_to 'Simple Rails Blog', root_path %></h1>
 			</header>
+
+<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert") %>
+<% end %>
 
 <%= yield %>
 			

@@ -1,9 +1,11 @@
 			<section class="posts">
 <% @posts.each do |post| %>
-				<article>
-					<h2 class="title"><%= link_to	post.title, post %></h2>
-					<h3 class="author"><%= post.author.name %></h3>
-					<%= truncate post.body, length: 200, separator: ' ', omission: '(...)' %>
+				<article class="post">
+					<div class="info">
+						<h2 class="title"><%= link_to	post.title, post %></h2>
+						By <%= post.author.name %>
+					</div>
+					<%= simple_format(truncate post.body, length: 200, separator: ' ', omission: ' ...') %>
 				</article>
 <% end %>
 			</section>
