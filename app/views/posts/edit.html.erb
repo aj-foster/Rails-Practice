@@ -1,0 +1,7 @@
+			<section class="posts form">
+				<%= render 'form' %>
+				<p>
+					<%= link_to 'Back', posts_path %> | 
+					<%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</p>
+			</section>

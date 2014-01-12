@@ -6,6 +6,16 @@
 				<div class="body">
 					<%= simple_format(@post.body) %>
 				</div>
+<% if can? :manage, @post %>
+				<div class="actions">
+					<h3>Post Actions:</h3>
+					<p>
+						<%= link_to 'Edit Post', edit_post_path(@post) %> | 
+						<%= link_to	'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</p>
+					
+				</div>
+<% end %>
 			</section>
 			<hr>
 			<section class="comments">

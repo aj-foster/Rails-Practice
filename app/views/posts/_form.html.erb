@@ -1,4 +1,4 @@
-				<%= form_for :post, url: posts_path do |f| %>
+				<%= form_for @post do |f| %>
 <% if @post.errors.any? %>
 					<h2>Submission <%= pluralize @post.errors.count, "Error" %></h2>
 					<ul>

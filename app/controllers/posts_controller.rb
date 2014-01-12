@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	before_filter :authenticate_user!, except: [:show, :index]
 
 	def index
-		@posts = Post.all.sort_by {|e| e.created_at}.reverse
+		@posts = Post.order(created_at: :desc).take(5)
 	end
 
 
@@ -29,12 +29,32 @@ class PostsController < ApplicationController
 	end
 
 
+	def edit
+		@post = Post.find(params[:id])
+	end
+
+
+	def update
+		@post = Post.find(params[:id])
+
+		if can? :update, @post
+			if @post.update(post_params)
+				redirect_to @post, notice: 'Post updated.'
+			else
+				render 'edit'
+			end
+		else
+			redirect_to @post, notice: "You aren't allowed to edit that post."
+		end
+	end
+
+
 	def destroy
 		@post = Post.find(params[:id])
 
 		if can? :destroy, @post
 			@post.destroy
-			redirect_to post_path, notice: 'Post deleted.'
+			redirect_to posts_path, notice: 'Post deleted.'
 		else
 			redirect_to post_path(@post), notice: "You aren't allowed to delete that post."
 		end
