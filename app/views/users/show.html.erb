@@ -1,3 +1,8 @@
+<% if can? :manage, @user %>
+			<section class="actions">
+				<%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
+			</section>
+<% end %>
 			<section class="posts">
 				<h2>Recent posts by <%= @user.name %></h2>
 <% if !@posts.blank? %>

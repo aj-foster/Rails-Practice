@@ -8,6 +8,7 @@ class Ability
 
 		can :manage, :all if user.role == "Admin"
 
+		can :manage, User, :id => user.id
 		can :manage, Post, :author_id => user.id
 		can :manage, Comment, :author_id => user.id
 		can :destroy, Comment do |comment|
